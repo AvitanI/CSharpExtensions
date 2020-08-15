@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\ClassExtensions.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\CompanyAddress.cs" />
+    <Compile Include="Models\ECompanyType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
