@@ -8,21 +8,21 @@ namespace CSharpExtensions.Extensions
 {
     public static class ClassExtensions
     {
+        /// <summary>
+        /// Find the differences between two objects using <see cref="object.Equals"/> method on properties.
+        /// Note that props which decorated with <see cref="IgnoreDifferenceCheckAttribute"/> will not be compared.
+        /// Props who decorated with <see cref="DisplayNameAttribute"/> will override prop name by default.
+        /// </summary>
+        /// <typeparam name="T">The class for compare</typeparam>
+        /// <param name="before">Before change</param>
+        /// <param name="after">After change</param>
+        /// <returns></returns>
         public static IEnumerable<Difference> FindDifferences<T>(this T before, T after) where T : class
         {
-            #region Validations
-
-            if (before is null)
-            {
-                throw new ArgumentNullException(nameof(before));
-            }
-
-            if (after is null)
+            if (before is null || after is null)
             {
                 return Enumerable.Empty<Difference>();
             }
-
-            #endregion
 
             PropertyInfo[] propertiesInfo = before.GetType().GetProperties();
             var changes = new List<Difference>(propertiesInfo.Count());
